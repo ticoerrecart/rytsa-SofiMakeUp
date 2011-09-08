@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Sofi Urtea MakeUp</title>
+    <script src="js/jquery/jquery-1.6.2.min.js"></script>
+	<style>
+		.centrado{position: absolute;left: 50%;top: 50%;}
+		
+		.alineado-izq{position: absolute;left: 120px;}
+	</style>
+    <script>
+    	function sleep(ms){
+    		var dt = new Date();
+    		dt.setTime(dt.getTime() + ms);
+    		while (new Date().getTime() < dt.getTime());
+    	}
+    	
+    	var imagenes = new Array();
+    	function cargarPresentacion(){
+    		var contador = 0;
+    		for(var i=0;i<4;i++){
+	    		imagenes[i] = $('<img />').attr('src', 'images/menu/' + parseInt(i+1) + '.JPG').load(function(){
+	    																		contador++;
+	    																		if(contador==imagenes.length){
+	    																			$("#central").removeClass("centrado");
+	    																			$("#central").addClass("alineado-izq");
+	    																			cambiarImagenesPresentacion();
+	    																		}
+																    	    });
+    		}
+    	}
+
+    	var indice = 0;
+    	function cambiarImagenesPresentacion(){
+    			$("#imagenCentral").hide();
+		  		$("#imagenCentral").attr('src', imagenes[indice].attr('src'));
+		  		$('#imagenCentral').fadeIn('slow');
+	  			indice++;
+		  		if(indice<imagenes.length){
+			  		$('#imagenCentral').fadeOut('slow', function() {
+			  		    // Animation complete.
+			  			cambiarImagenesPresentacion();
+			  		  });
+
+				}else{
+					//cargó la ultima imagen
+					cargarMenues();
+				}
+    	}
+    	
+    	function cargarMenues(){
+    		cargarMenu1();
+    		cargarMenu2();
+    		cargarMenu3();
+    		cargarMenu4();
+    		cargarMenu5();
+    		cargarMenu6();
+    		cargarMenuFacebook();
+    	}
+
+    	function cargarMenu1(){
+    		$("#menu1").show("slow");
+    		for(var i=1;i<=50;i++){
+	    		$("#menu1").animate({"left": "+=5px"}, 10);
+    		}
+    	}
+    	
+    	function cargarMenu2(){
+    		$("#menu2").show("slow");
+    		for(var i=1;i<=62;i++){
+	    		$("#menu2").animate({"left": "-=5px"}, 10);
+    		}
+    	}
+
+    	function cargarMenu3(){
+    		$("#menu3").show("slow");
+    		for(var i=1;i<=90;i++){
+	    		$("#menu3").animate({"left": "+=5px"}, 10);
+    		}
+    	}
+
+    	function cargarMenu4(){
+    		$("#menu4").show("fast");
+    		for(var i=1;i<=158;i++){
+	    		$("#menu4").animate({"left": "+=5px"}, 10);
+    		}
+    	}
+    	
+    	function cargarMenu5(){
+    		$("#menu5").show("slow");
+    		//bajo y me paso de largo
+    		for(var i=1;i<=82;i++){//62
+	    		$("#menu5").animate({"top": "+=5px"}, 10);
+    		}
+    		//después lo subo un poco
+    		for(var i=1;i<=19;i++){//62
+	    		$("#menu5").animate({"top": "-=5px"}, 15);
+    		}
+    	}
+
+    	function cargarMenu6(){
+    		$("#menu6").show("slow");
+    		//bajo y me paso de largo
+    		for(var i=1;i<=112;i++){//62
+	    		$("#menu6").animate({"top": "-=5px"}, 10);
+    		}
+    	}
+    	
+    	function cargarMenuFacebook(){
+    		$("#menuFacebook").fadeIn("slow");
+    	}
+
+    	function opacidad(menuNro, valorOpacidad){
+			 //componentes que se apagan si o si    		 
+			 $('#imagenCentral').fadeTo('slow', valorOpacidad);
+			 $('#imagenMenu5').fadeTo('slow', valorOpacidad);
+    		
+	 		 if(menuNro=='menu1'){
+	 			//$("#menu2").css({ opacity: valorOpacidad });
+	 			$('#imagenMenu2').fadeTo('slow', valorOpacidad);
+	 			$('#imagenMenu3').fadeTo('slow', valorOpacidad);
+	 			$('#imagenMenu4').fadeTo('slow', valorOpacidad);
+	 			if(valorOpacidad==1){
+	 				$('#textoMenu1').fadeOut('slow');
+	 			}else{
+	 				$('#textoMenu1').fadeIn('slow');
+	 			}
+	 		}
+    		
+    		if(menuNro=='menu2'){
+    			//$("#menu1").css({ opacity: valorOpacidad });
+    			$('#imagenMenu1').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu3').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu4').fadeTo('slow', valorOpacidad);
+    			if(valorOpacidad==1){
+    				$('#textoMenu2').fadeOut('slow');
+    			}else{
+    				$('#textoMenu2').fadeIn('slow');
+    			}
+    		}
+    		
+    		if(menuNro=='menu3'){
+    			//$("#menu1").css({ opacity: valorOpacidad });
+    			$('#imagenMenu1').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu2').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu4').fadeTo('slow', valorOpacidad);
+    			if(valorOpacidad==1){
+    				$('#textoMenu3').fadeOut('slow');
+    			}else{
+    				$('#textoMenu3').fadeIn('slow');
+    			}
+    		}
+    		
+    		if(menuNro=='menu4'){
+    			//$("#menu1").css({ opacity: valorOpacidad });
+    			$('#imagenMenu1').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu2').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu3').fadeTo('slow', valorOpacidad);
+    			if(valorOpacidad==1){
+    				$('#textoMenu4').fadeOut('slow');
+    			}else{
+    				$('#textoMenu4').fadeIn('slow');
+    			}
+    		}
+    		
+    		if(menuNro=='menuFacebook'){
+    			//$("#menu1").css({ opacity: valorOpacidad });
+    			$('#imagenMenu1').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu2').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu3').fadeTo('slow', valorOpacidad);
+    			$('#imagenMenu4').fadeTo('slow', valorOpacidad);
+    		}
+    	}
+    	
+    	function mostrarContenidoMenu(menuNro){
+    		if(menuNro=='menu1'){
+    			$("#contenidoMenu1").show();
+    			$('#contenidoMenuX').show("slow");
+    		}
+    			
+    		if(menuNro=='menu4'){
+    			$("#contenidoMenu4").show();
+    			$('#contenidoMenuX').show("slow");
+    		}
+    	}
+    	
+    	
+    	function cerrarMenu(){
+    		$('#contenidoMenuX').hide("slow");
+    		$("#contenidoMenu1").hide();
+    		$("#contenidoMenu4").hide();
+    	}
+    </script>
+  </head>
+
+  <body onload="cargarPresentacion();">
+	<!-- IMAGEN PRINCIPAL DE FONDO-->
+    <div id="central" align="center" class="centrado">
+    	<img id="imagenCentral" src="images/menu/loading.gif">
+	</div>
+	
+	<!-- MENU1 -->
+    <div id="menu1" style="display:none;position:absolute;z-index: 10;left: 0px;top: 105px">
+    	<a href="javascript:mostrarContenidoMenu('menu1')"><img id="imagenMenu1" src="images/menu/menu1.gif" onmouseover="opacidad('menu1',0.5);" onmouseout="opacidad('menu1',1);"></a>
+    </div>
+
+	<div id="textoMenu1" style="display:none;position:absolute;z-index: 10;left: 0px;top: 105px">
+		<img id="imagenTextoMenu1" src="images/menu/trabajos_realizados.gif">
+	</div>
+	
+	<!-- MENU2 -->
+    <div id="menu2" style="display:none;position:absolute;z-index: 10;left: 1059px;top: 214px">
+    	<a href="javascript:alert('menu2')"><img id="imagenMenu2" src="images/menu/menu2.gif" onmouseover="opacidad('menu2',0.5);" onmouseout="opacidad('menu2',1);"></a>
+    </div>
+
+	<div id="textoMenu2" style="display:none;position:absolute;z-index: 10;left: 840px;top: 214px">
+		<img id="imagenTextoMenu1" src="images/menu/cv.gif">
+	</div>
+
+	<!-- MENU3 -->
+	<div id="menu3" style="display:none;position:absolute;z-index: 10;left: 0px;top: 270px">
+    	<a href="javascript:alert('menu3')"><img id="imagenMenu3" src="images/menu/menu3.gif" onmouseover="opacidad('menu3',0.5);" onmouseout="opacidad('menu3',1);"></a>
+    </div>
+    
+    <div id="textoMenu3" style="display:none;position:absolute;z-index: 10;left: 570px;top: 270px">
+		<img id="imagenTextoMenu3" src="images/menu/fotos_maquillajes.gif">
+	</div>
+	
+	<!-- MENU4 -->
+	<div id="menu4" style="display:none;position:absolute;z-index: 10;left: 0px;top: 382px">
+    	<a href="javascript:mostrarContenidoMenu('menu4')"><img id="imagenMenu4" src="images/menu/menu4.gif" onmouseover="opacidad('menu4',0.5);" onmouseout="opacidad('menu4',1);"></a>
+    </div>
+    
+    <div id="textoMenu4" style="display:none;position:absolute;z-index: 10;left: 880px;top: 395px">
+		<img id="imagenTextoMenu4" src="images/menu/fotos_postiseria.gif">
+	</div>
+	
+	<!-- MENU5 -->
+	<div id="menu5" style="display:none;position:absolute;z-index: 10;left: 625px;top: 0px">
+    	<img id="imagenMenu5" src="images/menu/menu5.gif">
+    </div>
+
+	<!-- MENU6 -->
+	<div id="menu6" style="position:absolute;z-index: 10;left: 505px;top: 657px">
+    	<img id="imagenMenu6" src="images/menu/menu6.gif">
+    </div>
+
+    <!-- MENU FACEBOOK -->
+	<div id="menuFacebook" style="display:none;position:absolute;z-index: 10;left: 1050px;top: 700px">
+    	<a href="http://facebook.com/sofiurtea" target="_blank"><img id="imagenMenuFacebook" src="images/menu/facebook.gif" onmouseover="opacidad('menuFacebook',0.5);" onmouseout="opacidad('menuFacebook',1);"></a>
+    </div>
+
+    <!--  CONTENIDO MENU-->
+    <div id="contenidoMenuX" style="display:none;position:absolute;z-index: 10;left: 240px;top: 130px">
+    	<!--  CONTENIDO MENU1-->
+	    <embed id="contenidoMenu1" style="display: none" type="application/x-shockwave-flash" src="https://picasaweb.google.com/s/c/bin/slideshow.swf" width="800" height="533" flashvars="host=picasaweb.google.com&hl=en_US&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fticoerrecart%2Falbumid%2F5649943008519702417%3Falt%3Drss%26kind%3Dphoto%26hl%3Den_US" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+
+	    <!--  CONTENIDO MENU4-->
+	    <embed id="contenidoMenu4" style="display: none" type="application/x-shockwave-flash" src="https://picasaweb.google.com/s/c/bin/slideshow.swf" width="800" height="533" flashvars="host=picasaweb.google.com&hl=en_US&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fticoerrecart%2Falbumid%2F5649947134541292881%3Falt%3Drss%26kind%3Dphoto%26authkey%3DGv1sRgCLTKs6fdou3PXw%26hl%3Den_US" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>    	
+
+    	<a href="javascript:cerrarMenu()"><img src="images/menu/close.gif"></a>
+    </div>
+
+  </body>
+</html>
