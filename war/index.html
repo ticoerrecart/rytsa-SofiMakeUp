@@ -12,9 +12,10 @@
     <title>Sofi Urtea MakeUp</title>
     <script src="js/jquery/jquery-1.6.2.min.js"></script>
 	<style>
-		.centrado{position: absolute;left: 50%;top: 50%;}
+		.centrado{position: absolute;left: 47%;top: 47%;}
 		
 		.alineado-izq{position: absolute;left: 120px;}
+		a img {border: none; }
 	</style>
     <script>
     	function sleep(ms){
@@ -25,6 +26,11 @@
     	
     	var imagenes = new Array();
     	function cargarPresentacion(){
+    		//acomodo el menu4 de acuerdo al browser porque no se ven igual
+    		if($.browser.msie){
+    			$("div[id^='menu']").css("top","+=7px");
+    		}
+    		
     		var contador = 0;
     		for(var i=0;i<4;i++){
 	    		imagenes[i] = $('<img />').attr('src', 'images/menu/' + parseInt(i+1) + '.JPG').load(function(){
@@ -122,6 +128,7 @@
 			 //componentes que se apagan si o si    		 
 			 $('#imagenCentral').fadeTo('slow', valorOpacidad);
 			 $('#imagenMenu5').fadeTo('slow', valorOpacidad);
+			 $('#imagenMenu6').fadeTo('slow', valorOpacidad);
     		
 	 		 if(menuNro=='menu1'){
 	 			//$("#menu2").css({ opacity: valorOpacidad });
